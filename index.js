@@ -11,7 +11,7 @@ app.use(express.json())
 app.use("/data", dataRouter)
 
 
-app.listen(process.env.PORT, async ()=>{
+app.listen(process.env.PORT||8080, async ()=>{
     try{
       await connection;
       console.log("Connected to DB")
