@@ -1,7 +1,8 @@
 const { DataModel } = require("../model/data.model");
 
-exports.post = async (req, res) => {
+exports.postData = async (req, res) => {
   try {
+    
     const {
       name,
       email,
@@ -9,7 +10,8 @@ exports.post = async (req, res) => {
       number_of_travellers,
       budget_Per_person,
     } = req.body;
-    const total = +number_of_travellers * +budget_Per_person;
+    
+    const total = (+number_of_travellers) * (+budget_Per_person);
 
     const data = await new DataModel({
       name,
@@ -56,13 +58,3 @@ exports.searchbyname = async (req, res) => {
   }
 };
 
-exports.searchbyDate = async (req, res) => {
-  try {
-    const { createdAt } = req.body;
-    const Data = await DataModel.find({ createdAt });
-    res.status(201).send({ message: `Data createdAt ${createdAt}`, Data });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send({ Error: "Server Error" });
-  }
-};
