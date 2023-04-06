@@ -10,7 +10,7 @@ exports.postData = async (req, res) => {
       number_of_travellers,
       budget_Per_person,
     } = req.body;
-    
+    console.log(req.body)
     const total = (+number_of_travellers) * (+budget_Per_person);
 
     const data = await new DataModel({
@@ -36,7 +36,7 @@ exports.getData = async (req, res) => {
       const Data = await DataModel.find().sort({ createdAt: sort });
       res.status(201).send({ message: "Form Data", Data });
     } else {
-      const Data = await DataModel.find();
+      const Data = await DataModel.find().sort({createdAt : -1});
       res.status(201).send({ message: "Form Data", Data });
     }
   } catch (err) {
