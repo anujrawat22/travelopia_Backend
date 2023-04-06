@@ -13,6 +13,6 @@ dataRouter.post("/", postData);
 
 dataRouter.get("/", getData);
 
-dataRouter.get("/searchbyname", searchbyname);
+dataRouter.post("/searchbyname", searchbyname);
 
 module.exports = { dataRouter };
